@@ -1,3 +1,1 @@
-echo "@tailwind base;" > src\input.css
-echo "@tailwind components;" >> src\input.css
-echo "@tailwind utilities;" >> src\input.css
+@import "tailwindcss";

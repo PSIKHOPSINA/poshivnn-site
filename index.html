@@ -1,13 +1,1876 @@
 <!DOCTYPE html>
 <html lang="ru">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ПошивНН — производство одежды под ключ</title>
-    <link href="css/output.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="ПошивНН — производство одежды под ключ в Нижнем Новгороде. От 2 500 до 20 000 изделий в месяц. Все виды нанесения, любые ткани за 2 дня.">
+  <meta name="keywords" content="пошив одежды, производство одежды, Нижний Новгород, мерч, нанесение, DTF, шелкография, вышивка">
+  <title>ПошивНН — производство одежды под ключ в Нижнем Новгороде</title>
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS -->
+  <link href="css/output.css" rel="stylesheet">
+
+  <style>
+    /* ─── CSS Variables ────────────────────────── */
+    :root {
+      --clr-dark:    #1E1E1E;
+      --clr-accent:  #8B0000;
+      --clr-accent2: #A50000;   /* hover-светлее */
+      --clr-light:   #F5F5F5;
+      --clr-white:   #FFFFFF;
+      --clr-text:    #111111;
+      --clr-textlt:  #DDDDDD;
+      --clr-muted:   #6B7280;
+      --font-d: 'Montserrat', sans-serif;
+      --font-b: 'Inter', sans-serif;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-b); color: var(--clr-text); background: var(--clr-white); }
+    h1, h2, h3, h4 { font-family: var(--font-d); }
+
+    /* ─── Hero animations ──────────────────────── */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(28px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .hero-anim-1 { animation: fadeInUp 0.75s ease both; }
+    .hero-anim-2 { animation: fadeInUp 0.75s ease 0.15s both; }
+    .hero-anim-3 { animation: fadeInUp 0.75s ease 0.30s both; }
+    .hero-anim-4 { animation: fadeInUp 0.75s ease 0.45s both; }
+
+    /* ─── Scroll-reveal ────────────────────────── */
+    .anim-scroll {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.55s ease, transform 0.55s ease;
+    }
+    .anim-scroll.visible {
+      opacity: 1;
+      transform: none;
+    }
+    .anim-scroll.delay-1 { transition-delay: 0.1s; }
+    .anim-scroll.delay-2 { transition-delay: 0.2s; }
+    .anim-scroll.delay-3 { transition-delay: 0.3s; }
+    .anim-scroll.delay-4 { transition-delay: 0.4s; }
+    .anim-scroll.delay-5 { transition-delay: 0.5s; }
+
+    /* ─── Nav ──────────────────────────────────── */
+    .nav-link {
+      position: relative;
+      color: var(--clr-textlt);
+      text-decoration: none;
+      transition: color 0.2s;
+      padding-bottom: 2px;
+    }
+    .nav-link:hover { color: #fff; }
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      left: 0; bottom: -2px;
+      height: 2px;
+      width: 0;
+      background: var(--clr-accent);
+      border-radius: 1px;
+      transition: width 0.25s ease;
+    }
+    .nav-link:hover::after,
+    .nav-link.active::after { width: 100%; }
+    .nav-link.active { color: #fff; }
+
+    /* ─── Burger ───────────────────────────────── */
+    #burger { background: none; border: none; cursor: pointer; padding: 8px; display: flex; flex-direction: column; gap: 6px; }
+    #burger span {
+      display: block;
+      width: 24px; height: 2px;
+      background: #ddd;
+      border-radius: 2px;
+      transition: transform 0.25s ease, opacity 0.25s ease;
+    }
+    #burger.open span:nth-child(1) { transform: translateY(8px) rotate(45deg); }
+    #burger.open span:nth-child(2) { opacity: 0; }
+    #burger.open span:nth-child(3) { transform: translateY(-8px) rotate(-45deg); }
+
+    /* ─── Buttons ──────────────────────────────── */
+    .btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px;
+      border-radius: 4px;
+      font-family: var(--font-b);
+      font-size: 0.9rem; font-weight: 600;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: opacity 0.2s ease, transform 0.2s ease, background 0.2s ease, color 0.2s ease;
+      min-height: 44px;
+    }
+    .btn:hover { transform: scale(1.02); }
+
+    .btn-accent {
+      background: var(--clr-accent);
+      color: #fff;
+    }
+    .btn-accent:hover { opacity: 0.88; }
+
+    .btn-outline {
+      background: transparent;
+      border-color: var(--clr-accent);
+      color: var(--clr-accent);
+    }
+    .btn-outline:hover { background: var(--clr-accent); color: #fff; }
+
+    .btn-ghost {
+      background: transparent;
+      border-color: #fff;
+      color: #fff;
+    }
+    .btn-ghost:hover { background: #fff; color: var(--clr-dark); }
+
+    .btn-sm { padding: 8px 16px; font-size: 0.82rem; min-height: 38px; }
+
+    /* ─── Section titles ───────────────────────── */
+    .section-label {
+      display: inline-block;
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--clr-accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      font-weight: 900;
+      line-height: 1.15;
+      margin-bottom: 16px;
+    }
+    .section-sub {
+      font-size: 1rem;
+      color: var(--clr-muted);
+      line-height: 1.65;
+      max-width: 560px;
+    }
+
+    /* ─── Portfolio card ───────────────────────── */
+    .portfolio-card {
+      transition: transform 0.25s ease, box-shadow 0.25s ease;
+    }
+    .portfolio-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 16px 40px rgba(0,0,0,0.13);
+    }
+
+    /* ─── Divider accent ───────────────────────── */
+    .accent-divider {
+      width: 48px; height: 3px;
+      background: var(--clr-accent);
+      border-radius: 2px;
+      margin-bottom: 20px;
+    }
+
+    /* ─── Hero logo float ──────────────────────── */
+    @keyframes heroLogoFloat {
+      0%, 100% { transform: translateY(0) scale(1); }
+      50%       { transform: translateY(-14px) scale(1.016); }
+    }
+    .hero-logo {
+      animation: heroLogoFloat 7s ease-in-out infinite;
+      filter: drop-shadow(0 8px 40px rgba(139,0,0,0.55)) drop-shadow(0 0 90px rgba(139,0,0,0.22));
+      transform-origin: center;
+      max-width: 360px; width: 100%;
+    }
+
+    /* ─── Clothing animation (hero BG) ────────── */
+    @keyframes clothFloat {
+      0%   { transform: translateY(0px) rotate(var(--r0)) scale(1); }
+      45%  { transform: translateY(var(--dy)) rotate(var(--r1)) scale(1.03); }
+      100% { transform: translateY(0px) rotate(var(--r0)) scale(1); }
+    }
+    .cloth-item {
+      position: absolute; pointer-events: none;
+      animation: clothFloat ease-in-out infinite;
+      animation-duration: var(--dur, 9s);
+      animation-delay: var(--del, 0s);
+      opacity: var(--op, 0.07);
+      will-change: transform;
+    }
+
+    /* ─── Contact form ──────────────────────── */
+    .form-field { position: relative; margin-bottom: 28px; }
+    .form-field input, .form-field textarea {
+      width: 100%; background: transparent; border: none;
+      border-bottom: 1.5px solid #D1D5DB;
+      padding: 10px 0 8px; font-family: var(--font-b);
+      font-size: 0.95rem; color: var(--clr-text);
+      outline: none; transition: border-color 0.25s; resize: none;
+    }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--clr-accent); }
+    .form-field label {
+      position: absolute; top: 10px; left: 0;
+      font-size: 0.85rem; color: var(--clr-muted);
+      pointer-events: none;
+      transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+    }
+    .form-field input:focus ~ label,
+    .form-field input:not(:placeholder-shown) ~ label,
+    .form-field textarea:focus ~ label,
+    .form-field textarea:not(:placeholder-shown) ~ label {
+      top: -14px; font-size: 0.7rem; color: var(--clr-accent);
+    }
+    .form-submit {
+      position: relative; overflow: hidden; background: var(--clr-dark);
+      color: #fff; border: none; cursor: pointer;
+      padding: 14px 36px; font-size: 0.9rem; font-weight: 600;
+      font-family: var(--font-b); border-radius: 4px;
+      transition: background 0.3s; min-height: 48px;
+    }
+    .form-submit::after {
+      content: ''; position: absolute; inset: 0;
+      background: var(--clr-accent); transform: translateX(-101%);
+      transition: transform 0.3s ease;
+    }
+    .form-submit:hover::after { transform: translateX(0); }
+    .form-submit span { position: relative; z-index: 1; }
+
+    /* ─── Gallery strip ────────────────────── */
+    .gallery-strip {
+      display: flex; gap: 12px;
+      overflow-x: auto; scroll-snap-type: x mandatory;
+      scroll-behavior: smooth; -webkit-overflow-scrolling: touch;
+      padding-bottom: 8px; cursor: grab;
+    }
+    .gallery-strip::-webkit-scrollbar { height: 3px; }
+    .gallery-strip::-webkit-scrollbar-track { background: transparent; }
+    .gallery-strip::-webkit-scrollbar-thumb { background: var(--clr-accent); border-radius: 2px; }
+    .gallery-strip:active { cursor: grabbing; }
+    .gallery-thumb {
+      scroll-snap-align: start; flex-shrink: 0;
+      width: 200px; height: 150px; border-radius: 10px;
+      overflow: hidden; position: relative;
+    }
+    .gallery-thumb img { width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
+    .gallery-thumb:hover img { transform: scale(1.05); }
+    .gallery-thumb-label {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 6px 10px;
+      background: linear-gradient(transparent, rgba(0,0,0,0.72));
+      font-size: 0.68rem; font-weight: 700; color: #fff;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      opacity: 0; transition: opacity 0.25s;
+    }
+    .gallery-thumb:hover .gallery-thumb-label { opacity: 1; }
+
+    /* ─── FAQ accordion ────────────────────────── */
+    .faq-btn { background: none; border: none; cursor: pointer; }
+    .faq-btn:hover { background: rgba(0,0,0,0.02); }
+    .faq-icon { transition: transform 0.3s ease; display:flex; align-items:center; }
+    .faq-item.open .faq-icon { transform: rotate(180deg); }
+    .faq-item.open { border-color: var(--clr-accent) !important; }
+
+    /* ─── Popup modal ──────────────────────────── */
+    .popup-overlay {
+      position: fixed; inset: 0; z-index: 200;
+      background: rgba(0,0,0,0.55); backdrop-filter: blur(3px);
+      display: flex; align-items: center; justify-content: center;
+      padding: 16px;
+      opacity: 0; pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+    .popup-overlay.active { opacity: 1; pointer-events: auto; }
+    .popup-box {
+      background: #fff; border-radius: 16px;
+      width: 100%; max-width: 460px;
+      padding: 36px 36px 32px;
+      position: relative;
+      transform: translateY(24px);
+      transition: transform 0.35s ease;
+      box-shadow: 0 24px 60px rgba(0,0,0,0.18);
+    }
+    .popup-overlay.active .popup-box { transform: translateY(0); }
+    .popup-close {
+      position: absolute; top: 16px; right: 16px;
+      width: 32px; height: 32px; border-radius: 50%;
+      border: none; background: var(--clr-light); cursor: pointer;
+      display: flex; align-items: center; justify-content: center;
+      transition: background 0.2s;
+    }
+    .popup-close:hover { background: #e5e5e5; }
+
+    /* ─── Reduce motion ────────────────────────── */
+    @media (prefers-reduced-motion: reduce) {
+      .anim-scroll, .hero-anim-1, .hero-anim-2, .hero-anim-3, .hero-anim-4, .cloth-item {
+        animation: none !important;
+        transition: none !important;
+        opacity: 1 !important;
+        transform: none !important;
+      }
+    }
+  </style>
 </head>
-<body class="bg-white text-gray-900">
-    <h1 class="text-3xl font-bold text-center p-8">ПошивНН</h1>
-    <p class="text-center">Сайт в разработке. Скоро здесь будет полная информация.</p>
+<body>
+
+<!-- ═══════════════════════════════════════════════════
+     HEADER
+════════════════════════════════════════════════════ -->
+<header id="site-header" style="background: var(--clr-dark);"
+        class="fixed top-0 left-0 right-0 z-50 border-b border-[#2e2e2e]">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="flex items-center justify-between h-16">
+
+      <!-- Логотип -->
+      <a href="#hero" class="flex items-center">
+        <img src=".claude/skills/mainlogo.png" alt="ПошивНН" class="h-12 object-contain" style="max-width:160px;">
+      </a>
+
+      <!-- Навигация — десктоп -->
+      <nav class="hidden md:flex items-center gap-7 text-sm font-medium">
+        <a href="#advantages" class="nav-link">Преимущества</a>
+        <a href="#key"        class="nav-link">Под ключ</a>
+        <a href="#portfolio"  class="nav-link">Клиенты</a>
+        <a href="#production" class="nav-link">Производство</a>
+        <a href="#contacts"   class="nav-link">Контакты</a>
+        <a href="#faq"        class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- CTA — десктоп -->
+      <a href="https://t.me/poshivnn" target="_blank" rel="noopener"
+         class="btn btn-accent btn-sm hidden md:inline-flex">
+        Написать →
+      </a>
+
+      <!-- Бургер — мобайл -->
+      <button id="burger" aria-label="Открыть меню" class="md:hidden">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </div>
+
+  <!-- Мобильное меню -->
+  <div id="mobile-menu" class="hidden" style="background: var(--clr-dark); border-top: 1px solid #2e2e2e;">
+    <nav class="flex flex-col px-4 py-5 gap-4 text-sm font-medium">
+      <a href="#advantages" class="nav-link mobile-nav-link">Преимущества</a>
+      <a href="#key"        class="nav-link mobile-nav-link">Под ключ</a>
+      <a href="#portfolio"  class="nav-link mobile-nav-link">Клиенты</a>
+      <a href="#production" class="nav-link mobile-nav-link">Производство</a>
+      <a href="#contacts"   class="nav-link mobile-nav-link">Контакты</a>
+      <a href="#faq"        class="nav-link mobile-nav-link">FAQ</a>
+      <div class="mt-2">
+        <a href="https://t.me/poshivnn" target="_blank" rel="noopener"
+           class="btn btn-accent btn-sm">
+          Написать в Telegram →
+        </a>
+      </div>
+    </nav>
+  </div>
+</header>
+
+<main>
+
+  <!-- ═══════════════════════════════════════════════════
+       HERO
+  ════════════════════════════════════════════════════ -->
+  <section id="hero" class="min-h-screen flex items-center" style="position:relative; overflow:hidden; padding-top:64px;
+    background:
+      radial-gradient(ellipse 70% 55% at 8% 18%,  rgba(160,10,10,0.32) 0%, transparent 60%),
+      radial-gradient(ellipse 50% 45% at 92% 80%,  rgba(110,0,30,0.22) 0%, transparent 55%),
+      radial-gradient(ellipse 40% 35% at 70% 5%,   rgba(130,0,20,0.18) 0%, transparent 50%),
+      radial-gradient(ellipse 60% 40% at 55% 95%,  rgba(80,0,40,0.14)  0%, transparent 45%),
+      #0c0606;">
+
+    <!-- Декоративные глянцевые блики -->
+    <div aria-hidden="true" style="pointer-events:none;position:absolute;inset:0;">
+      <div style="position:absolute;top:-10%;left:-5%;width:55%;height:60%;background:radial-gradient(ellipse,rgba(180,20,20,0.07) 0%,transparent 65%);border-radius:50%;"></div>
+      <div style="position:absolute;bottom:-15%;right:-5%;width:50%;height:55%;background:radial-gradient(ellipse,rgba(100,0,50,0.10) 0%,transparent 60%);border-radius:50%;"></div>
+    </div>
+
+    <!-- 3D Clothing items (9 items: 3 hoodies + 3 oversized tees + 3 caps) -->
+    <div aria-hidden="true" style="position:absolute;inset:0;overflow:hidden;">
+
+      <!-- HOODIE 1 — large, top-left -->
+      <div class="cloth-item" style="left:3%;top:10%;width:112px;--r0:-7deg;--r1:5deg;--dy:-30px;--dur:9s;--del:0s;--op:0.15;">
+        <svg viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M22 40 L22 102 L78 102 L78 40 L76 16 C70 8 60 4 50 8 C40 4 30 8 24 16Z" fill="rgba(20,0,0,1)" transform="translate(3,4)"/>
+          <path d="M22 40 L4 30 L14 44Z" fill="rgba(20,0,0,0.8)" transform="translate(3,4)"/>
+          <path d="M78 40 L96 30 L86 44Z" fill="rgba(20,0,0,0.8)" transform="translate(3,4)"/>
+          <path d="M22 40 L4 30 L14 44Z" fill="rgba(200,50,50,1)"/>
+          <path d="M78 40 L96 30 L86 44Z" fill="rgba(90,0,0,1)"/>
+          <path d="M22 40 L22 102 L78 102 L78 40 L76 16 C70 8 60 4 50 8 C40 4 30 8 24 16Z" fill="rgba(160,10,10,1)"/>
+          <path d="M30 18 C28 10 50 3 50 3 C50 3 72 10 70 18 C66 25 34 25 30 18Z" fill="rgba(80,0,0,1)"/>
+          <ellipse cx="50" cy="20" rx="11" ry="7" fill="rgba(25,0,0,1)"/>
+          <rect x="22" y="40" width="4" height="62" fill="rgba(200,60,60,0.55)" rx="1"/>
+          <path d="M34 71 L66 71 L66 90 Q66 93 63 93 L37 93 Q34 93 34 90Z" fill="rgba(100,0,0,1)"/>
+          <line x1="50" y1="71" x2="50" y2="93" stroke="rgba(200,80,80,0.3)" stroke-width="0.8"/>
+          <line x1="45" y1="26" x2="43" y2="50" stroke="rgba(220,130,130,0.55)" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="55" y1="26" x2="57" y2="50" stroke="rgba(220,130,130,0.55)" stroke-width="1.2" stroke-linecap="round"/>
+          <line x1="22" y1="99" x2="78" y2="99" stroke="rgba(200,80,80,0.3)" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <!-- HOODIE 2 — medium, bottom-left -->
+      <div class="cloth-item" style="left:12%;top:62%;width:80px;--r0:6deg;--r1:-4deg;--dy:-22px;--dur:12s;--del:3s;--op:0.12;">
+        <svg viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M22 40 L4 30 L14 44Z" fill="rgba(200,50,50,1)"/>
+          <path d="M78 40 L96 30 L86 44Z" fill="rgba(90,0,0,1)"/>
+          <path d="M22 40 L22 102 L78 102 L78 40 L76 16 C70 8 60 4 50 8 C40 4 30 8 24 16Z" fill="rgba(150,5,5,1)"/>
+          <path d="M30 18 C28 10 50 3 50 3 C50 3 72 10 70 18 C66 25 34 25 30 18Z" fill="rgba(75,0,0,1)"/>
+          <ellipse cx="50" cy="20" rx="11" ry="7" fill="rgba(20,0,0,1)"/>
+          <rect x="22" y="40" width="4" height="62" fill="rgba(200,60,60,0.45)" rx="1"/>
+          <path d="M34 71 L66 71 L66 90 Q66 93 63 93 L37 93 Q34 93 34 90Z" fill="rgba(95,0,0,1)"/>
+        </svg>
+      </div>
+
+      <!-- HOODIE 3 — small, right-center -->
+      <div class="cloth-item" style="right:6%;top:52%;width:65px;--r0:-4deg;--r1:8deg;--dy:-18px;--dur:14s;--del:6s;--op:0.10;">
+        <svg viewBox="0 0 100 115" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M22 40 L4 30 L14 44Z" fill="rgba(190,40,40,1)"/>
+          <path d="M78 40 L96 30 L86 44Z" fill="rgba(85,0,0,1)"/>
+          <path d="M22 40 L22 102 L78 102 L78 40 L76 16 C70 8 60 4 50 8 C40 4 30 8 24 16Z" fill="rgba(140,5,5,1)"/>
+          <path d="M30 18 C28 10 50 3 50 3 C50 3 72 10 70 18 C66 25 34 25 30 18Z" fill="rgba(70,0,0,1)"/>
+          <ellipse cx="50" cy="20" rx="11" ry="7" fill="rgba(18,0,0,1)"/>
+          <path d="M34 71 L66 71 L66 90 Q66 93 63 93 L37 93 Q34 93 34 90Z" fill="rgba(90,0,0,1)"/>
+        </svg>
+      </div>
+
+      <!-- OVERSIZED TEE 1 — large, top-right -->
+      <div class="cloth-item" style="right:4%;top:7%;width:108px;--r0:8deg;--r1:-5deg;--dy:-25px;--dur:10.5s;--del:1.5s;--op:0.13;">
+        <svg viewBox="0 0 120 105" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M20 28 L20 98 L100 98 L100 28 L115 18 L88 4 L72 20 C66 14 54 14 48 20 L32 4 L5 18Z" fill="rgba(20,0,0,0.8)" transform="translate(3,4)"/>
+          <path d="M20 28 L5 18 L32 4 L48 20Z" fill="rgba(195,45,45,1)"/>
+          <path d="M100 28 L115 18 L88 4 L72 20Z" fill="rgba(85,0,0,1)"/>
+          <path d="M48 20 C50 14 60 12 72 20 L64 16 C58 12 62 12 48 20Z" fill="rgba(40,0,0,1)"/>
+          <path d="M20 28 L20 98 L100 98 L100 28 L72 20 C66 14 54 14 48 20Z" fill="rgba(150,8,8,1)"/>
+          <rect x="20" y="28" width="4" height="70" fill="rgba(195,55,55,0.5)" rx="1"/>
+          <path d="M48 20 C52 26 58 28 60 28 C62 28 68 26 72 20" stroke="rgba(200,90,90,0.35)" stroke-width="1" fill="none"/>
+          <line x1="20" y1="95" x2="100" y2="95" stroke="rgba(195,70,70,0.28)" stroke-width="2"/>
+        </svg>
+      </div>
+
+      <!-- OVERSIZED TEE 2 — medium, center-left -->
+      <div class="cloth-item" style="left:22%;top:22%;width:78px;--r0:-10deg;--r1:4deg;--dy:-20px;--dur:13s;--del:4.5s;--op:0.10;">
+        <svg viewBox="0 0 120 105" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M20 28 L5 18 L32 4 L48 20Z" fill="rgba(190,40,40,1)"/>
+          <path d="M100 28 L115 18 L88 4 L72 20Z" fill="rgba(80,0,0,1)"/>
+          <path d="M20 28 L20 98 L100 98 L100 28 L72 20 C66 14 54 14 48 20Z" fill="rgba(140,6,6,1)"/>
+          <rect x="20" y="28" width="4" height="70" fill="rgba(190,50,50,0.45)" rx="1"/>
+          <path d="M48 20 C52 26 58 28 60 28 C62 28 68 26 72 20" stroke="rgba(195,85,85,0.3)" stroke-width="1" fill="none"/>
+        </svg>
+      </div>
+
+      <!-- OVERSIZED TEE 3 — small, bottom-center -->
+      <div class="cloth-item" style="left:42%;top:70%;width:62px;--r0:5deg;--r1:-7deg;--dy:-16px;--dur:11s;--del:7s;--op:0.09;">
+        <svg viewBox="0 0 120 105" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M20 28 L5 18 L32 4 L48 20Z" fill="rgba(185,38,38,1)"/>
+          <path d="M100 28 L115 18 L88 4 L72 20Z" fill="rgba(78,0,0,1)"/>
+          <path d="M20 28 L20 98 L100 98 L100 28 L72 20 C66 14 54 14 48 20Z" fill="rgba(135,5,5,1)"/>
+          <rect x="20" y="28" width="3" height="70" fill="rgba(185,48,48,0.4)" rx="1"/>
+        </svg>
+      </div>
+
+      <!-- CAP 1 — large, right side upper -->
+      <div class="cloth-item" style="right:18%;top:14%;width:105px;--r0:5deg;--r1:-6deg;--dy:-22px;--dur:11s;--del:2s;--op:0.13;">
+        <svg viewBox="0 0 110 78" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M12 54 Q10 62 52 66 Q94 62 98 54 Z" fill="rgba(20,0,0,0.7)" transform="translate(2,4)"/>
+          <path d="M32 54 C32 26 88 26 88 54 Z" fill="rgba(75,0,0,1)"/>
+          <path d="M10 54 Q10 20 55 16 Q90 16 88 54 Q62 57 34 57 Z" fill="rgba(148,8,8,1)"/>
+          <path d="M32 28 Q55 13 78 28 Q55 20 32 28Z" fill="rgba(185,50,50,0.6)"/>
+          <line x1="55" y1="16" x2="55" y2="54" stroke="rgba(185,80,80,0.18)" stroke-width="0.8"/>
+          <line x1="32" y1="28" x2="36" y2="54" stroke="rgba(185,80,80,0.15)" stroke-width="0.7"/>
+          <line x1="78" y1="28" x2="74" y2="54" stroke="rgba(185,80,80,0.15)" stroke-width="0.7"/>
+          <path d="M12 54 Q10 62 52 66 Q94 62 88 54 Z" fill="rgba(95,0,0,1)"/>
+          <path d="M20 57 Q52 62 84 57" stroke="rgba(185,80,80,0.22)" stroke-width="0.8" fill="none"/>
+          <circle cx="55" cy="18" r="3.5" fill="rgba(155,30,30,1)" stroke="rgba(210,110,110,0.4)" stroke-width="0.5"/>
+          <path d="M40 54 L70 54" stroke="rgba(95,10,10,1)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+          <path d="M47 54 L63 54" stroke="rgba(130,20,20,1)" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <path d="M15 53 Q52 56 88 53" stroke="rgba(185,80,80,0.22)" stroke-width="2" fill="none"/>
+        </svg>
+      </div>
+
+      <!-- CAP 2 — medium, left-center -->
+      <div class="cloth-item" style="left:8%;top:40%;width:82px;--r0:-6deg;--r1:5deg;--dy:-18px;--dur:9.5s;--del:5s;--op:0.11;">
+        <svg viewBox="0 0 110 78" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M32 54 C32 26 88 26 88 54 Z" fill="rgba(72,0,0,1)"/>
+          <path d="M10 54 Q10 20 55 16 Q90 16 88 54 Q62 57 34 57 Z" fill="rgba(142,6,6,1)"/>
+          <path d="M32 28 Q55 13 78 28 Q55 20 32 28Z" fill="rgba(180,45,45,0.55)"/>
+          <path d="M12 54 Q10 62 52 66 Q94 62 88 54 Z" fill="rgba(90,0,0,1)"/>
+          <circle cx="55" cy="18" r="3.5" fill="rgba(150,28,28,1)" stroke="rgba(205,105,105,0.35)" stroke-width="0.5"/>
+          <path d="M40 54 L70 54" stroke="rgba(90,8,8,1)" stroke-width="4.5" fill="none" stroke-linecap="round"/>
+        </svg>
+      </div>
+
+      <!-- CAP 3 — small, bottom-right -->
+      <div class="cloth-item" style="right:28%;top:75%;width:60px;--r0:9deg;--r1:-5deg;--dy:-14px;--dur:10s;--del:1s;--op:0.09;">
+        <svg viewBox="0 0 110 78" xmlns="http://www.w3.org/2000/svg" fill="none">
+          <path d="M32 54 C32 26 88 26 88 54 Z" fill="rgba(68,0,0,1)"/>
+          <path d="M10 54 Q10 20 55 16 Q90 16 88 54 Q62 57 34 57 Z" fill="rgba(136,5,5,1)"/>
+          <path d="M32 28 Q55 13 78 28 Q55 20 32 28Z" fill="rgba(175,42,42,0.5)"/>
+          <path d="M12 54 Q10 62 52 66 Q94 62 88 54 Z" fill="rgba(85,0,0,1)"/>
+          <circle cx="55" cy="18" r="3.5" fill="rgba(145,26,26,1)"/>
+        </svg>
+      </div>
+
+    </div>
+
+    <!-- Контент -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24 w-full relative">
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-16 items-center">
+
+        <!-- Левая колонка: текст -->
+        <div>
+          <h1 class="hero-anim-2 font-black leading-tight mb-6 text-white"
+              style="font-family:var(--font-d); font-size:clamp(2.2rem, 5.5vw, 4.2rem);">
+            Производство одежды<br>
+            <span style="color:var(--clr-accent);">под ключ.</span><br>
+            От идеи до отправки клиентам.
+          </h1>
+
+          <p class="hero-anim-3 text-base sm:text-lg leading-relaxed mb-10"
+             style="color:var(--clr-textlt); max-width:520px;">
+            от <strong class="text-white">2&nbsp;500</strong> до <strong class="text-white">20&nbsp;000</strong> изделий в месяц ·
+            Любые ткани за 2 дня · Все виды нанесения
+          </p>
+
+          <div class="hero-anim-4 flex flex-wrap gap-4">
+            <a href="https://t.me/poshivnn" target="_blank" rel="noopener" class="btn btn-accent">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M21.8 2.1L1.3 10.1c-1.4.6-1.4 1.4-.3 1.7l5.2 1.6 2 6.4c.3.8.4 1.2 1.1 1.2.6 0 .9-.3 1.3-.7l3.2-3.1 5.2 3.8c1 .5 1.7.3 1.9-.9L23 4c.4-1.5-.6-2.2-1.2-1.9z" fill="white"/>
+              </svg>
+              Написать в Telegram
+            </a>
+            <a href="https://wa.me/79001234567" target="_blank" rel="noopener" class="btn btn-ghost">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C6.5 2 2 6.5 2 12c0 2 .6 3.9 1.6 5.5L2 22l4.7-1.6C8.2 21.4 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.5 14.1c-.2.6-1.2 1.1-1.7 1.2-.4.1-.9.1-1.4-.1-.3-.1-.7-.2-1.3-.5-2.2-1-3.7-3.2-3.8-3.3-.1-.2-.9-1.2-.9-2.3 0-1.1.6-1.6.8-1.9.2-.2.4-.3.6-.3h.4c.2 0 .4 0 .5.4.2.5.7 1.7.8 1.8.1.1.1.3 0 .4l-.3.4c-.1.1-.2.3-.1.5.2.4.8 1.3 1.6 2 1 .9 1.9 1.2 2.2 1.3.2.1.4 0 .5-.1l.7-.8c.1-.2.3-.2.5-.1.2.1 1.3.6 1.5.7.2.1.3.2.4.3.1.3-.1 1.1-.3 1.7z" fill="currentColor"/>
+              </svg>
+              Написать в WhatsApp
+            </a>
+          </div>
+        </div>
+
+        <!-- Правая колонка: логотип (только десктоп) -->
+        <div class="hidden lg:flex items-center justify-center hero-anim-1">
+          <img src=".claude/skills/mainlogo.png" alt="ПошивНН" class="hero-logo" loading="eager">
+        </div>
+
+      </div>
+
+      <!-- Статистика (полная ширина) -->
+      <div class="hero-anim-4 mt-14 pt-10 border-t border-[#2e2e2e] grid grid-cols-2 md:grid-cols-4 gap-6">
+        <div>
+          <p class="text-3xl md:text-4xl font-black text-white" style="font-family:var(--font-d);">20 000</p>
+          <p class="text-sm mt-1" style="color:var(--clr-muted);">изделий в месяц</p>
+        </div>
+        <div>
+          <p class="text-3xl md:text-4xl font-black text-white" style="font-family:var(--font-d);">6</p>
+          <p class="text-sm mt-1" style="color:var(--clr-muted);">лет опыта</p>
+        </div>
+        <div>
+          <p class="text-3xl md:text-4xl font-black text-white" style="font-family:var(--font-d);">5</p>
+          <p class="text-sm mt-1" style="color:var(--clr-muted);">видов нанесения</p>
+        </div>
+        <div>
+          <p class="text-3xl md:text-4xl font-black text-white" style="font-family:var(--font-d);">12+</p>
+          <p class="text-sm mt-1" style="color:var(--clr-muted);">известных брендов</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       ADVANTAGES  — содержимое добавляется в Подзадаче 2
+  ════════════════════════════════════════════════════ -->
+  <section id="advantages" class="py-20" style="background: var(--clr-light);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Заголовок -->
+      <div class="anim-scroll mb-12 text-center">
+        <span class="section-label">Почему выбирают нас</span>
+        <h2 class="section-title" style="color:var(--clr-text);">
+          Работаем так,<br>чтобы вы возвращались
+        </h2>
+        <div class="accent-divider mx-auto"></div>
+      </div>
+
+      <!-- Карточки (порядок: ведение → тираж → ткани → браки → шьём всё) -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6">
+
+        <!-- 1: Введение и поддержка (бывший "Русский менеджмент") -->
+        <div class="anim-scroll delay-1 bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background:rgba(139,0,0,0.08);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+              <circle cx="9" cy="7" r="4"/>
+              <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+              <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2" style="font-family:var(--font-d); color:var(--clr-text);">
+            Введение и поддержка
+          </h3>
+          <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">
+            Полное сопровождение после разработки линейки одежды — от образцов до первой продажи.
+          </p>
+        </div>
+
+        <!-- 2: Любой тираж -->
+        <div class="anim-scroll delay-2 bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background:rgba(139,0,0,0.08);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <line x1="12" y1="20" x2="12" y2="10"/>
+              <line x1="18" y1="20" x2="18" y2="4"/>
+              <line x1="6"  y1="20" x2="6"  y2="16"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2" style="font-family:var(--font-d); color:var(--clr-text);">
+            Любой тираж
+          </h3>
+          <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">
+            От <strong>2&nbsp;500</strong> до <strong>20&nbsp;000</strong> изделий в месяц — масштабируемся под задачу.
+          </p>
+        </div>
+
+        <!-- 3: Ткани за 2 дня -->
+        <div class="anim-scroll delay-3 bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background:rgba(139,0,0,0.08);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2" style="font-family:var(--font-d); color:var(--clr-text);">
+            Ткани за 2 дня
+          </h3>
+          <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">
+            Любую ткань заказываем точно под партию. Поставка за 2 рабочих дня.
+          </p>
+        </div>
+
+        <!-- 4: Переделываем браки (бывший #1) -->
+        <div class="anim-scroll delay-4 bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background:rgba(139,0,0,0.08);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+              <polyline points="9 12 11 14 15 10"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2" style="font-family:var(--font-d); color:var(--clr-text);">
+            Переделываем браки
+          </h3>
+          <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">
+            Любые дефекты устраняем бесплатно — клиент не должен за это платить.
+          </p>
+        </div>
+
+        <!-- 5: Шьём всё -->
+        <div class="anim-scroll delay-5 bg-white rounded-xl p-6 shadow-sm hover:shadow-md transition-shadow duration-300">
+          <div class="w-11 h-11 rounded-lg flex items-center justify-center mb-4"
+               style="background:rgba(139,0,0,0.08);">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M20.38 3.46L16 2a4 4 0 0 1-8 0L3.62 3.46a2 2 0 0 0-1.34 2.23l.58 3.57a1 1 0 0 0 .99.84H6v10c0 1.1.9 2 2 2h8a2 2 0 0 0 2-2V10h2.15a1 1 0 0 0 .99-.84l.58-3.57a2 2 0 0 0-1.34-2.23z"/>
+            </svg>
+          </div>
+          <h3 class="font-bold text-base mb-2" style="font-family:var(--font-d); color:var(--clr-text);">
+            Шьём всё
+          </h3>
+          <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">
+            Футболки, худи, пуховики, платья — всё кроме спецодежды.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       UNDER KEY  — содержимое добавляется в Подзадаче 3
+  ════════════════════════════════════════════════════ -->
+  <section id="key" class="py-20" style="background: var(--clr-white);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Заголовок -->
+      <div class="anim-scroll mb-14 text-center">
+        <span class="section-label">Запуск бренда</span>
+        <h2 class="section-title" style="color:var(--clr-text);">
+          Возьмём на себя всё —<br>вам останется только принять товар
+        </h2>
+        <div class="accent-divider mx-auto"></div>
+      </div>
+
+      <!-- Основной блок: шаги + карточка цены -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-start mb-14">
+
+        <!-- Левая колонка: нумерованные шаги -->
+        <div class="anim-scroll">
+          <ol class="flex flex-col gap-0">
+
+            <!-- шаг -->
+            <li class="flex gap-5 group">
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0"
+                     style="background:var(--clr-accent); font-family:var(--font-d);">1</div>
+                <div class="flex-1 w-px mt-1 mb-1" style="background:#e5e5e5; min-height:24px;"></div>
+              </div>
+              <div class="pb-7">
+                <p class="font-bold text-base mb-1" style="font-family:var(--font-d);">Разработка одежды</p>
+                <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">Концепция, эскизы, технические задания на каждое изделие.</p>
+              </div>
+            </li>
+
+            <li class="flex gap-5 group">
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0"
+                     style="background:var(--clr-accent); font-family:var(--font-d);">2</div>
+                <div class="flex-1 w-px mt-1 mb-1" style="background:#e5e5e5; min-height:24px;"></div>
+              </div>
+              <div class="pb-7">
+                <p class="font-bold text-base mb-1" style="font-family:var(--font-d);">Разработка лекал</p>
+                <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">Профессиональные лекала под ваши размерные ряды.</p>
+              </div>
+            </li>
+
+            <li class="flex gap-5 group">
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0"
+                     style="background:var(--clr-accent); font-family:var(--font-d);">3</div>
+                <div class="flex-1 w-px mt-1 mb-1" style="background:#e5e5e5; min-height:24px;"></div>
+              </div>
+              <div class="pb-7">
+                <p class="font-bold text-base mb-1" style="font-family:var(--font-d);">Сайт и платёжная система</p>
+                <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">Tilda, WordPress или кастомная разработка — под ваш бюджет и задачу.</p>
+              </div>
+            </li>
+
+            <li class="flex gap-5 group">
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0"
+                     style="background:var(--clr-accent); font-family:var(--font-d);">4</div>
+                <div class="flex-1 w-px mt-1 mb-1" style="background:#e5e5e5; min-height:24px;"></div>
+              </div>
+              <div class="pb-7">
+                <p class="font-bold text-base mb-1" style="font-family:var(--font-d);">Пошив образцов</p>
+                <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">Согласуем образцы до запуска тиража — никаких сюрпризов.</p>
+              </div>
+            </li>
+
+            <li class="flex gap-5 group">
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0"
+                     style="background:var(--clr-accent); font-family:var(--font-d);">5</div>
+                <div class="flex-1 w-px mt-1 mb-1" style="background:#e5e5e5; min-height:24px;"></div>
+              </div>
+              <div class="pb-7">
+                <p class="font-bold text-base mb-1" style="font-family:var(--font-d);">Пошив партии и нанесение</p>
+                <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">DTF, шелкография, вышивка, сублимация — всё на одной площадке.</p>
+              </div>
+            </li>
+
+            <li class="flex gap-5 group">
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0"
+                     style="background:var(--clr-accent); font-family:var(--font-d);">6</div>
+                <div class="flex-1 w-px mt-1 mb-1" style="background:#e5e5e5; min-height:24px;"></div>
+              </div>
+              <div class="pb-7">
+                <p class="font-bold text-base mb-1" style="font-family:var(--font-d);">Упаковка</p>
+                <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">Бирки, пакеты, коробки — базовые в наличии, кастомные под заказ.</p>
+              </div>
+            </li>
+
+            <li class="flex gap-5 group">
+              <div class="flex flex-col items-center">
+                <div class="w-9 h-9 rounded-full flex items-center justify-center text-sm font-black text-white shrink-0"
+                     style="background:var(--clr-accent); font-family:var(--font-d);">7</div>
+              </div>
+              <div class="pb-2">
+                <p class="font-bold text-base mb-1" style="font-family:var(--font-d);">Отправка транспортной компанией</p>
+                <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">СДЭК, любая ТК или поштучная отгрузка напрямую вашим клиентам.</p>
+              </div>
+            </li>
+
+          </ol>
+        </div>
+
+        <!-- Правая колонка: карточка цены -->
+        <div class="anim-scroll delay-2">
+          <div class="rounded-2xl overflow-hidden" style="border: 1px solid #e5e5e5;">
+
+            <!-- Шапка карточки -->
+            <div class="px-8 pt-10 pb-8" style="background:var(--clr-dark);">
+              <p class="text-xs font-semibold uppercase tracking-widest mb-3" style="color:var(--clr-muted);">
+                Услуга «Под ключ»
+              </p>
+              <p class="font-black leading-none text-white mb-2"
+                 style="font-family:var(--font-d); font-size:clamp(1.8rem, 4vw, 2.6rem);">
+                Индивидуальный расчёт
+              </p>
+              <p class="text-sm" style="color:var(--clr-muted);">
+                полный цикл от идеи до первой продажи
+              </p>
+            </div>
+
+            <!-- Тело карточки -->
+            <div class="px-8 py-8">
+              <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color:var(--clr-muted);">
+                В стоимость входит
+              </p>
+              <ul class="flex flex-col gap-3 text-sm mb-8">
+                <li class="flex items-center gap-3">
+                  <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                        style="background:rgba(139,0,0,0.1);">
+                    <svg width="10" height="10" viewBox="0 0 12 10" fill="none">
+                      <polyline points="1 5 4.5 8.5 11 1" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  Разработка одежды и лекал
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                        style="background:rgba(139,0,0,0.1);">
+                    <svg width="10" height="10" viewBox="0 0 12 10" fill="none">
+                      <polyline points="1 5 4.5 8.5 11 1" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  Сайт и платёжная система
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                        style="background:rgba(139,0,0,0.1);">
+                    <svg width="10" height="10" viewBox="0 0 12 10" fill="none">
+                      <polyline points="1 5 4.5 8.5 11 1" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  Пошив образцов и тиража
+                </li>
+                <li class="flex items-center gap-3">
+                  <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                        style="background:rgba(139,0,0,0.1);">
+                    <svg width="10" height="10" viewBox="0 0 12 10" fill="none">
+                      <polyline points="1 5 4.5 8.5 11 1" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                  </span>
+                  Нанесение, упаковка, отправка
+                </li>
+                <li class="flex items-center gap-3" style="color:var(--clr-muted);">
+                  <span class="w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                        style="background:#f0f0f0;">
+                    <svg width="10" height="10" viewBox="0 0 12 10" fill="none">
+                      <line x1="3" y1="5" x2="9" y2="5" stroke="var(--clr-muted)" stroke-width="2" stroke-linecap="round"/>
+                    </svg>
+                  </span>
+                  Поддержка — за доп. стоимость
+                </li>
+              </ul>
+
+              <p class="text-xs leading-relaxed mb-6" style="color:var(--clr-muted);">
+                Предоплата 50% · Индивидуальный расчёт · Скидка на первый заказ — обсуждаемо.
+              </p>
+
+              <a href="https://t.me/poshivnn" target="_blank" rel="noopener"
+                 class="btn btn-accent w-full justify-center">
+                Обсудить проект →
+              </a>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+      <!-- Блок для блогеров -->
+      <div class="anim-scroll delay-1 rounded-2xl px-8 py-10 flex flex-col md:flex-row items-start md:items-center gap-6"
+           style="background:var(--clr-dark);">
+        <div class="w-12 h-12 rounded-xl flex items-center justify-center shrink-0"
+             style="background:var(--clr-accent);">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <polygon points="23 7 16 12 23 17 23 7"/>
+            <rect x="1" y="5" width="15" height="14" rx="2" ry="2"/>
+          </svg>
+        </div>
+        <div class="flex-1">
+          <p class="font-black text-lg text-white mb-1" style="font-family:var(--font-d);">
+            Мерч для блогеров и стримеров
+          </p>
+          <p class="text-sm leading-relaxed" style="color:var(--clr-textlt);">
+            Работаем с T7AR, Vikkimol, Егором Шипом и другими. Закрываем все финансовые и технические вопросы —
+            вам не нужно разбираться в производстве. Расскажите идею, остальное за нами.
+          </p>
+        </div>
+        <a href="https://t.me/poshivnn" target="_blank" rel="noopener"
+           class="btn btn-ghost shrink-0">
+          Написать →
+        </a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       PORTFOLIO  — содержимое добавляется в Подзадаче 4
+  ════════════════════════════════════════════════════ -->
+  <section id="portfolio" class="py-20" style="background: var(--clr-light);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Заголовок -->
+      <div class="anim-scroll mb-12 text-center">
+        <span class="section-label">Наши клиенты</span>
+        <h2 class="section-title" style="color:var(--clr-text);">
+          Бренды, которые нам доверяют
+        </h2>
+        <div class="accent-divider mx-auto"></div>
+        <p class="section-sub mx-auto text-center mt-0">
+          Стримеры, музыканты, streetwear-бренды и Wildberries-продавцы — все находят у нас то, что нужно.
+        </p>
+      </div>
+
+      <!-- Сетка кейсов (тираж +30%, обновлённые логотипы, LAVIKS) -->
+      <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+
+        <!-- tsar-store -->
+        <div class="portfolio-card anim-scroll bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/tsar-store/logo.png" alt="Tsar Store" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">Tsar Store</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Известный стример</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Худи с вышивкой, DTF</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">910 шт.</p>
+            <a href="https://tsar-store.ru" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- vikkimol -->
+        <div class="portfolio-card anim-scroll delay-1 bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/vikkimol/logo.png" alt="Vikkimol" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">Vikkimol</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Блогер-миллионник</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Пижамы, халаты</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">6 500 шт.</p>
+            <a href="https://vikkimol.ru" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- egor-ship -->
+        <div class="portfolio-card anim-scroll delay-2 bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/egor-ship/logo.png" alt="Егор Шип" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">Егор Шип</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Известный музыкант</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Мерч тура, шелкография</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">3 900 шт.</p>
+            <a href="https://e-ship.ru" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- sens-obscur -->
+        <div class="portfolio-card anim-scroll delay-3 bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/sens-obscur/logo.jpg" alt="Sens Obscur" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">Sens Obscur</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Streetwear на Wildberries</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Оверсайз, шелкография</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">15 600 шт.</p>
+            <a href="https://www.wildberries.ru/seller/4246658" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- pullupclub -->
+        <div class="portfolio-card anim-scroll delay-4 bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/pullupclub/logo.png" alt="PullUpClub" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">PullUpClub</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Спортивный бренд</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Худи, шорты, сублимация</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">3 250 шт.</p>
+            <a href="https://pullupclub.ru" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- venomkiss -->
+        <div class="portfolio-card anim-scroll delay-5 bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/venomkiss/logo.png" alt="VENOMKISS" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">VENOMKISS</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Женский streetwear</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Худи, платья, DTF</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">1 040 шт.</p>
+            <a href="https://www.instagram.com/venomkiss_brand" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- frozen-crew -->
+        <div class="portfolio-card anim-scroll bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/frozen-crew/logo.png" alt="Frozen Crew" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">Frozen Crew</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Уличный бренд</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Лонгсливы, ветровки</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">1 950 шт.</p>
+            <a href="http://frozencrew.ru" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- zero-archive -->
+        <div class="portfolio-card anim-scroll delay-1 bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/zero-archive/logo.png" alt="Zero Archive" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">Zero Archive</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Авангардный streetwear</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Асим. худи, карго</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">1 560 шт.</p>
+            <a href="https://zeroarchive.ru" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- dbngg -->
+        <div class="portfolio-card anim-scroll delay-2 bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/dbngg/logo.png" alt="DBNGG" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">DBNGG</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Denim-культура</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Джинс, вышивка vintage</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">715 шт.</p>
+            <a href="https://www.dvigg.com" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- hustler-club -->
+        <div class="portfolio-card anim-scroll delay-3 bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/hustler-club/logo.png" alt="Hustler Club" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">Hustler Club</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Люксовый streetwear</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Кепки, толстовки, вышивка</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">910 шт.</p>
+            <a href="https://hustlerclub.ru" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- lavkis → LAVIKS (блогер) -->
+        <div class="portfolio-card anim-scroll delay-4 bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/lavkis/logo.png" alt="LAVIKS" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">LAVIKS</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Блогер, эко-стиль</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Лён, рубашки, DTF</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">520 шт.</p>
+            <a href="https://laviks-store.ru" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+        <!-- saliy-studio -->
+        <div class="portfolio-card anim-scroll delay-5 bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <div class="h-24 flex items-center justify-center p-4" style="background:var(--clr-light);">
+            <img src="cases/saliy-studio/logo.jpg" alt="Salíy Studio" loading="lazy" class="max-h-14 max-w-full object-contain">
+          </div>
+          <div class="px-4 py-4">
+            <p class="font-bold text-xs mb-0.5" style="font-family:var(--font-d);">Salíy Studio</p>
+            <p class="text-xs mb-1" style="color:var(--clr-accent); font-weight:600;">Premium-бренд</p>
+            <p class="text-xs leading-relaxed mb-1" style="color:var(--clr-muted);">Ручная вышивка, шёлк</p>
+            <p class="text-xs font-bold mb-3" style="color:var(--clr-accent);">260 шт.</p>
+            <a href="https://t.me/saliyclothes" target="_blank" rel="noopener" class="text-xs font-semibold inline-flex items-center gap-1 hover:underline" style="color:var(--clr-accent);">Перейти в магазин ↗</a>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- Мини-галерея -->
+      <div class="anim-scroll mt-12">
+        <div class="flex items-center justify-between mb-4">
+          <p class="font-bold text-sm" style="font-family:var(--font-d);">Наши работы</p>
+          <a href="cases.html" class="text-xs font-semibold hover:underline" style="color:var(--clr-accent);">Смотреть все фото ↗</a>
+        </div>
+        <div style="position:relative;">
+          <div class="gallery-strip" id="galleryStrip">
+            <div class="gallery-thumb"><img src="cases/tsar-store/1.png" alt="Tsar Store" loading="lazy"><span class="gallery-thumb-label">Tsar Store</span></div>
+            <div class="gallery-thumb"><img src="cases/tsar-store/2.png" alt="Tsar Store" loading="lazy"><span class="gallery-thumb-label">Tsar Store</span></div>
+            <div class="gallery-thumb"><img src="cases/vikkimol/1.png" alt="Vikkimol" loading="lazy"><span class="gallery-thumb-label">Vikkimol</span></div>
+            <div class="gallery-thumb"><img src="cases/vikkimol/2.png" alt="Vikkimol" loading="lazy"><span class="gallery-thumb-label">Vikkimol</span></div>
+            <div class="gallery-thumb"><img src="cases/egor-ship/1.png" alt="Егор Шип" loading="lazy"><span class="gallery-thumb-label">Егор Шип</span></div>
+            <div class="gallery-thumb"><img src="cases/egor-ship/2.png" alt="Егор Шип" loading="lazy"><span class="gallery-thumb-label">Егор Шип</span></div>
+            <div class="gallery-thumb"><img src="cases/sens-obscur/1.png" alt="Sens Obscur" loading="lazy"><span class="gallery-thumb-label">Sens Obscur</span></div>
+            <div class="gallery-thumb"><img src="cases/sens-obscur/2.png" alt="Sens Obscur" loading="lazy"><span class="gallery-thumb-label">Sens Obscur</span></div>
+            <div class="gallery-thumb"><img src="cases/pullupclub/1.png" alt="PullUpClub" loading="lazy"><span class="gallery-thumb-label">PullUpClub</span></div>
+            <div class="gallery-thumb"><img src="cases/pullupclub/2.png" alt="PullUpClub" loading="lazy"><span class="gallery-thumb-label">PullUpClub</span></div>
+            <div class="gallery-thumb"><img src="cases/venomkiss/1.png" alt="VENOMKISS" loading="lazy"><span class="gallery-thumb-label">VENOMKISS</span></div>
+            <div class="gallery-thumb"><img src="cases/venomkiss/2.png" alt="VENOMKISS" loading="lazy"><span class="gallery-thumb-label">VENOMKISS</span></div>
+            <div class="gallery-thumb"><img src="cases/frozen-crew/1.png" alt="Frozen Crew" loading="lazy"><span class="gallery-thumb-label">Frozen Crew</span></div>
+            <div class="gallery-thumb"><img src="cases/frozen-crew/2.png" alt="Frozen Crew" loading="lazy"><span class="gallery-thumb-label">Frozen Crew</span></div>
+            <div class="gallery-thumb"><img src="cases/zero-archive/1.png" alt="Zero Archive" loading="lazy"><span class="gallery-thumb-label">Zero Archive</span></div>
+            <div class="gallery-thumb"><img src="cases/zero-archive/2.png" alt="Zero Archive" loading="lazy"><span class="gallery-thumb-label">Zero Archive</span></div>
+            <div class="gallery-thumb"><img src="cases/dbngg/1.png" alt="DBNGG" loading="lazy"><span class="gallery-thumb-label">DBNGG</span></div>
+            <div class="gallery-thumb"><img src="cases/dbngg/2.png" alt="DBNGG" loading="lazy"><span class="gallery-thumb-label">DBNGG</span></div>
+            <div class="gallery-thumb"><img src="cases/hustler-club/1.png" alt="Hustler Club" loading="lazy"><span class="gallery-thumb-label">Hustler Club</span></div>
+            <div class="gallery-thumb"><img src="cases/hustler-club/2.png" alt="Hustler Club" loading="lazy"><span class="gallery-thumb-label">Hustler Club</span></div>
+            <div class="gallery-thumb"><img src="cases/lavkis/1.png" alt="LAVIKS" loading="lazy"><span class="gallery-thumb-label">LAVIKS</span></div>
+            <div class="gallery-thumb"><img src="cases/lavkis/2.png" alt="LAVIKS" loading="lazy"><span class="gallery-thumb-label">LAVIKS</span></div>
+          </div>
+          <div style="position:absolute;top:0;right:0;bottom:8px;width:64px;background:linear-gradient(to right,transparent,var(--clr-light));pointer-events:none;border-radius:0 10px 10px 0;"></div>
+        </div>
+      </div>
+
+      <!-- CTA под галереей -->
+      <div class="anim-scroll mt-10 text-center">
+        <p class="text-sm mb-5" style="color:var(--clr-muted);">Хотите попасть в этот список? Обсудим ваш проект.</p>
+        <a href="https://t.me/poshivnn" target="_blank" rel="noopener" class="btn btn-accent">Написать в Telegram →</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       PRODUCTION  — содержимое добавляется в Подзадаче 5
+  ════════════════════════════════════════════════════ -->
+  <section id="production" class="py-20" style="background: var(--clr-dark);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Заголовок -->
+      <div class="anim-scroll mb-14 text-center">
+        <span class="section-label">Производство</span>
+        <h2 class="section-title text-white">
+          Собственное производство<br>в Нижнем Новгороде
+        </h2>
+        <div class="accent-divider mx-auto"></div>
+      </div>
+
+      <!-- Счётчики -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-px mb-16"
+           style="background:#2e2e2e; border-radius:16px; overflow:hidden;">
+
+        <div class="anim-scroll text-center px-8 py-12" style="background:var(--clr-dark);">
+          <p class="font-black text-white leading-none mb-2"
+             style="font-family:var(--font-d); font-size:clamp(3.2rem, 8vw, 5.5rem);">
+            <span class="counter" data-count="20000">20000</span>
+          </p>
+          <p class="text-sm font-medium uppercase tracking-wider" style="color:var(--clr-muted);">
+            изделий в месяц
+          </p>
+        </div>
+
+        <div class="anim-scroll delay-2 text-center px-8 py-12" style="background:var(--clr-dark);">
+          <p class="font-black leading-none mb-2"
+             style="font-family:var(--font-d); font-size:clamp(3.2rem, 8vw, 5.5rem); color:var(--clr-accent);">
+            <span class="counter" data-count="6">6</span>
+          </p>
+          <p class="text-sm font-medium uppercase tracking-wider" style="color:var(--clr-muted);">
+            лет опыта
+          </p>
+        </div>
+
+        <div class="anim-scroll delay-4 text-center px-8 py-12" style="background:var(--clr-dark);">
+          <p class="font-black text-white leading-none mb-2"
+             style="font-family:var(--font-d); font-size:clamp(3.2rem, 8vw, 5.5rem);">
+            <span class="counter" data-count="5">5</span>
+          </p>
+          <p class="text-sm font-medium uppercase tracking-wider" style="color:var(--clr-muted);">
+            видов нанесения
+          </p>
+        </div>
+
+      </div>
+
+      <!-- Фотосетка 2×3 -->
+      <div class="grid grid-cols-2 md:grid-cols-3 gap-3 mb-16">
+        <div class="anim-scroll         rounded-xl flex items-center justify-center text-sm text-center p-4"
+             style="background:#2a2a2a; aspect-ratio:4/3; color:var(--clr-muted);">Фото производства</div>
+        <div class="anim-scroll delay-1 rounded-xl flex items-center justify-center text-sm text-center p-4"
+             style="background:#2a2a2a; aspect-ratio:4/3; color:var(--clr-muted);">Фото производства</div>
+        <div class="anim-scroll delay-2 rounded-xl flex items-center justify-center text-sm text-center p-4"
+             style="background:#2a2a2a; aspect-ratio:4/3; color:var(--clr-muted);">Фото производства</div>
+        <div class="anim-scroll delay-3 rounded-xl flex items-center justify-center text-sm text-center p-4"
+             style="background:#2a2a2a; aspect-ratio:4/3; color:var(--clr-muted);">Фото производства</div>
+        <div class="anim-scroll delay-4 rounded-xl flex items-center justify-center text-sm text-center p-4"
+             style="background:#2a2a2a; aspect-ratio:4/3; color:var(--clr-muted);">Фото производства</div>
+        <div class="anim-scroll delay-5 rounded-xl flex items-center justify-center text-sm text-center p-4"
+             style="background:#2a2a2a; aspect-ratio:4/3; color:var(--clr-muted);">Фото производства</div>
+      </div>
+
+      <!-- Возможности + Логистика -->
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 mb-14">
+
+        <!-- Возможности -->
+        <div class="anim-scroll">
+          <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color:var(--clr-accent);">
+            Наши возможности
+          </p>
+          <ul class="flex flex-col gap-4">
+            <li class="flex items-start gap-3">
+              <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:var(--clr-accent);"></div>
+              <p class="text-sm leading-relaxed" style="color:var(--clr-textlt);">
+                <strong class="text-white">Любые ткани за 2 рабочих дня</strong> — не держим склад, заказываем точно под партию.
+              </p>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:var(--clr-accent);"></div>
+              <p class="text-sm leading-relaxed" style="color:var(--clr-textlt);">
+                <strong class="text-white">Все виды нанесения</strong>: DTF, шелкография, вышивка, сублимация, тампопечать.
+              </p>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:var(--clr-accent);"></div>
+              <p class="text-sm leading-relaxed" style="color:var(--clr-textlt);">
+                <strong class="text-white">Браки переделываем бесплатно</strong> — любой дефект устраняется без доп. оплаты.
+              </p>
+            </li>
+            <li class="flex items-start gap-3">
+              <div class="w-1.5 h-1.5 rounded-full mt-2 shrink-0" style="background:var(--clr-accent);"></div>
+              <p class="text-sm leading-relaxed" style="color:var(--clr-textlt);">
+                <strong class="text-white">Шьём всё</strong> — от футболок и пижам до пуховиков и изделий сложного кроя. Спецодежда — исключение.
+              </p>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Логистика -->
+        <div class="anim-scroll delay-2">
+          <p class="text-xs font-semibold uppercase tracking-widest mb-5" style="color:var(--clr-accent);">
+            Доставка
+          </p>
+          <div class="grid grid-cols-2 gap-3">
+
+            <div class="rounded-xl px-5 py-5" style="background:#2a2a2a;">
+              <svg class="mb-3" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="1" y="3" width="15" height="13" rx="1"/><path d="m16 8 4 0 3 4v4h-7V8z"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/>
+              </svg>
+              <p class="font-bold text-sm text-white mb-1" style="font-family:var(--font-d);">СДЭК</p>
+              <p class="text-xs" style="color:var(--clr-muted);">Приоритетная ТК</p>
+            </div>
+
+            <div class="rounded-xl px-5 py-5" style="background:#2a2a2a;">
+              <svg class="mb-3" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M5 12H3L12 3l9 9h-2"/><path d="M5 12v7a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-7"/>
+              </svg>
+              <p class="font-bold text-sm text-white mb-1" style="font-family:var(--font-d);">Самовывоз</p>
+              <p class="text-xs" style="color:var(--clr-muted);">Нижний Новгород</p>
+            </div>
+
+            <div class="rounded-xl px-5 py-5" style="background:#2a2a2a;">
+              <svg class="mb-3" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+              </svg>
+              <p class="font-bold text-sm text-white mb-1" style="font-family:var(--font-d);">Любая ТК</p>
+              <p class="text-xs" style="color:var(--clr-muted);">По вашему выбору</p>
+            </div>
+
+            <div class="rounded-xl px-5 py-5" style="background:#2a2a2a;">
+              <svg class="mb-3" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="var(--clr-accent)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 12V22H4V12"/><path d="M22 7H2v5h20V7z"/><path d="M12 22V7"/><path d="M12 7H7.5a2.5 2.5 0 0 1 0-5C11 2 12 7 12 7z"/><path d="M12 7h4.5a2.5 2.5 0 0 0 0-5C13 2 12 7 12 7z"/>
+              </svg>
+              <p class="font-bold text-sm text-white mb-1" style="font-family:var(--font-d);">Поштучно</p>
+              <p class="text-xs" style="color:var(--clr-muted);">Напрямую клиентам</p>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       CONTACTS  — содержимое добавляется в Подзадаче 5
+  ════════════════════════════════════════════════════ -->
+  <section id="contacts" class="py-20" style="background: var(--clr-white);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <!-- Заголовок -->
+      <div class="anim-scroll mb-12 text-center">
+        <span class="section-label">Свяжитесь с нами</span>
+        <h2 class="section-title" style="color:var(--clr-text);">
+          Обсудим ваш проект
+        </h2>
+        <div class="accent-divider mx-auto"></div>
+        <p class="section-sub mx-auto text-center mt-0">
+          Пишите в удобный мессенджер — ответим быстро и по делу.
+        </p>
+      </div>
+
+      <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+
+        <!-- Левая колонка: контакты -->
+        <div class="anim-scroll flex flex-col gap-4">
+
+          <!-- Telegram -->
+          <a href="https://t.me/poshivnn" target="_blank" rel="noopener"
+             class="flex items-center gap-5 rounded-xl px-6 py-5 transition-all duration-200 hover:shadow-md group"
+             style="border:1.5px solid #e5e5e5;">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style="background:#229ED9;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M21.8 2.1L1.3 10.1c-1.4.6-1.4 1.4-.3 1.7l5.2 1.6 2 6.4c.3.8.4 1.2 1.1 1.2.6 0 .9-.3 1.3-.7l3.2-3.1 5.2 3.8c1 .5 1.7.3 1.9-.9L23 4c.4-1.5-.6-2.2-1.2-1.9z" fill="white"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-sm" style="font-family:var(--font-d);">Telegram</p>
+              <p class="text-sm" style="color:var(--clr-muted);">@poshivnn — отвечаем быстро</p>
+            </div>
+            <svg class="group-hover:translate-x-1 transition-transform" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--clr-muted)" stroke-width="2" stroke-linecap="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+
+          <!-- WhatsApp -->
+          <a href="https://wa.me/79001234567" target="_blank" rel="noopener"
+             class="flex items-center gap-5 rounded-xl px-6 py-5 transition-all duration-200 hover:shadow-md group"
+             style="border:1.5px solid #e5e5e5;">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style="background:#25D366;">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none">
+                <path d="M12 2C6.5 2 2 6.5 2 12c0 2 .6 3.9 1.6 5.5L2 22l4.7-1.6C8.2 21.4 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.5 14.1c-.2.6-1.2 1.1-1.7 1.2-.4.1-.9.1-1.4-.1-.3-.1-.7-.2-1.3-.5-2.2-1-3.7-3.2-3.8-3.3-.1-.2-.9-1.2-.9-2.3 0-1.1.6-1.6.8-1.9.2-.2.4-.3.6-.3h.4c.2 0 .4 0 .5.4.2.5.7 1.7.8 1.8.1.1.1.3 0 .4l-.3.4c-.1.1-.2.3-.1.5.2.4.8 1.3 1.6 2 1 .9 1.9 1.2 2.2 1.3.2.1.4 0 .5-.1l.7-.8c.1-.2.3-.2.5-.1.2.1 1.3.6 1.5.7.2.1.3.2.4.3.1.3-.1 1.1-.3 1.7z" fill="white"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-sm" style="font-family:var(--font-d);">WhatsApp</p>
+              <p class="text-sm" style="color:var(--clr-muted);">+7 900 123-45-67</p>
+            </div>
+            <svg class="group-hover:translate-x-1 transition-transform" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--clr-muted)" stroke-width="2" stroke-linecap="round">
+              <path d="M5 12h14M12 5l7 7-7 7"/>
+            </svg>
+          </a>
+
+          <!-- Телефон -->
+          <a href="tel:+79001234567"
+             class="flex items-center gap-5 rounded-xl px-6 py-5 transition-all duration-200 hover:shadow-md group"
+             style="border:1.5px solid #e5e5e5;">
+            <div class="w-12 h-12 rounded-full flex items-center justify-center shrink-0" style="background:var(--clr-light);">
+              <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--clr-text)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 13a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 2.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.91a16 16 0 0 0 6.16 6.16l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/>
+              </svg>
+            </div>
+            <div class="flex-1">
+              <p class="font-bold text-sm" style="font-family:var(--font-d);">Телефон</p>
+              <p class="text-sm" style="color:var(--clr-muted);">+7 900 123-45-67</p>
+            </div>
+          </a>
+
+          <!-- Email + Адрес -->
+          <div class="grid grid-cols-2 gap-4">
+            <a href="mailto:info@poshivnn.ru"
+               class="flex flex-col gap-1 rounded-xl px-5 py-4 hover:shadow-md transition-all duration-200"
+               style="border:1.5px solid #e5e5e5;">
+              <p class="font-bold text-xs" style="font-family:var(--font-d);">Email</p>
+              <p class="text-xs" style="color:var(--clr-muted);">info@poshivnn.ru</p>
+            </a>
+            <div class="flex flex-col gap-1 rounded-xl px-5 py-4" style="border:1.5px solid #e5e5e5;">
+              <p class="font-bold text-xs" style="font-family:var(--font-d);">Адрес</p>
+              <p class="text-xs" style="color:var(--clr-muted);">Нижний Новгород</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Правая колонка: форма обратной связи -->
+        <div class="anim-scroll delay-2">
+          <p class="text-xs font-semibold uppercase tracking-widest mb-6" style="color:var(--clr-accent);">
+            Оставьте заявку
+          </p>
+          <form id="contactForm" onsubmit="handleFormSubmit(event)" novalidate>
+
+            <div class="form-field">
+              <input type="text" id="fname" name="name" placeholder=" " required autocomplete="name">
+              <label for="fname">Имя *</label>
+            </div>
+
+            <div class="form-field">
+              <input type="tel" id="fphone" name="phone" placeholder=" " required autocomplete="tel">
+              <label for="fphone">Телефон *</label>
+            </div>
+
+            <div class="form-field">
+              <input type="email" id="femail" name="email" placeholder=" " autocomplete="email">
+              <label for="femail">Email (необязательно)</label>
+            </div>
+
+            <div class="form-field">
+              <textarea id="fnote" name="note" placeholder=" " rows="3"></textarea>
+              <label for="fnote">Заметка / комментарий</label>
+            </div>
+
+            <button type="submit" class="form-submit w-full rounded-lg px-6 font-bold text-sm tracking-wide"
+                    style="font-family:var(--font-d);">
+              <span>Отправить заявку →</span>
+            </button>
+
+            <p id="formMsg" class="text-xs mt-4 text-center" style="color:var(--clr-accent); display:none;">
+              Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+            </p>
+
+          </form>
+        </div>
+
+      </div>
+
+      <!-- Как мы работаем (горизонтальный ряд) -->
+      <div class="anim-scroll mt-12 grid grid-cols-1 sm:grid-cols-3 gap-5">
+
+        <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--clr-light);">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-white font-black text-sm"
+               style="background:var(--clr-accent); font-family:var(--font-d);">1</div>
+          <div>
+            <p class="font-bold text-sm mb-1" style="font-family:var(--font-d);">Индивидуальный расчёт</p>
+            <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">
+              Стоимость зависит от изделия, тиража и сроков. Пишите, рассчитаем под вашу задачу.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--clr-light);">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-white font-black text-sm"
+               style="background:var(--clr-accent); font-family:var(--font-d);">2</div>
+          <div>
+            <p class="font-bold text-sm mb-1" style="font-family:var(--font-d);">Предоплата 50%</p>
+            <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">
+              Стандартные условия. Оставшиеся 50% — после изготовления и согласования.
+            </p>
+          </div>
+        </div>
+
+        <div class="flex items-start gap-4 rounded-xl p-5" style="background:var(--clr-light);">
+          <div class="w-10 h-10 rounded-lg flex items-center justify-center shrink-0 text-white font-black text-sm"
+               style="background:var(--clr-accent); font-family:var(--font-d);">3</div>
+          <div>
+            <p class="font-bold text-sm mb-1" style="font-family:var(--font-d);">Скидка постоянным партнёрам</p>
+            <p class="text-sm leading-relaxed" style="color:var(--clr-muted);">
+              Специальные условия для тех, кто работает с нами на постоянной основе.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══════════════════════════════════════════════════
+       FAQ
+  ════════════════════════════════════════════════════ -->
+  <section id="faq" class="py-20" style="background: var(--clr-light);">
+    <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+
+      <div class="anim-scroll mb-12 text-center">
+        <span class="section-label">Часто спрашивают</span>
+        <h2 class="section-title" style="color:var(--clr-text);">FAQ</h2>
+        <div class="accent-divider mx-auto"></div>
+      </div>
+
+      <div class="anim-scroll flex flex-col gap-3" id="faqList">
+
+        <div class="faq-item bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="font-bold text-sm pr-4" style="font-family:var(--font-d);">Какой минимальный тираж для заказа?</span>
+            <span class="faq-icon shrink-0" style="color:var(--clr-accent);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="faq-body" style="max-height:0; overflow:hidden; transition:max-height 0.38s ease, padding 0.3s ease; padding:0 24px;">
+            <p class="text-sm leading-relaxed pb-5" style="color:var(--clr-muted);">Мы работаем с тиражами от 50 единиц. Чем больше тираж — тем ниже стоимость единицы. Для небольших тиражей (50–200 шт.) уточняйте условия индивидуально.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="font-bold text-sm pr-4" style="font-family:var(--font-d);">Сколько времени занимает производство?</span>
+            <span class="faq-icon shrink-0" style="color:var(--clr-accent);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="faq-body" style="max-height:0; overflow:hidden; transition:max-height 0.38s ease, padding 0.3s ease; padding:0 24px;">
+            <p class="text-sm leading-relaxed pb-5" style="color:var(--clr-muted);">В среднем от 2 до 6 недель в зависимости от сложности изделия, тиража и загруженности производства. После утверждения образца сроки фиксируются в договоре.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="font-bold text-sm pr-4" style="font-family:var(--font-d);">Вы работаете только с брендами или с частными лицами тоже?</span>
+            <span class="faq-icon shrink-0" style="color:var(--clr-accent);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="faq-body" style="max-height:0; overflow:hidden; transition:max-height 0.38s ease, padding 0.3s ease; padding:0 24px;">
+            <p class="text-sm leading-relaxed pb-5" style="color:var(--clr-muted);">Работаем со всеми: блогерами, музыкантами, стримерами, брендами и любыми предпринимателями. Помогаем с нуля — от эскиза до готового изделия.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="font-bold text-sm pr-4" style="font-family:var(--font-d);">Какие виды нанесения вы поддерживаете?</span>
+            <span class="faq-icon shrink-0" style="color:var(--clr-accent);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="faq-body" style="max-height:0; overflow:hidden; transition:max-height 0.38s ease, padding 0.3s ease; padding:0 24px;">
+            <p class="text-sm leading-relaxed pb-5" style="color:var(--clr-muted);">DTF (прямая цифровая печать), шелкография, вышивка, сублимация, термоперенос. Подбираем метод под ваш дизайн, ткань и тираж.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="font-bold text-sm pr-4" style="font-family:var(--font-d);">Можно ли заказать пошив одного образца перед тиражом?</span>
+            <span class="faq-icon shrink-0" style="color:var(--clr-accent);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="faq-body" style="max-height:0; overflow:hidden; transition:max-height 0.38s ease, padding 0.3s ease; padding:0 24px;">
+            <p class="text-sm leading-relaxed pb-5" style="color:var(--clr-muted);">Да, обязательно делаем образец перед запуском тиража. Это стандартная часть нашего процесса — ни один тираж не идёт в производство без одобренного образца.</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="font-bold text-sm pr-4" style="font-family:var(--font-d);">Как происходит доставка готового заказа?</span>
+            <span class="faq-icon shrink-0" style="color:var(--clr-accent);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="faq-body" style="max-height:0; overflow:hidden; transition:max-height 0.38s ease, padding 0.3s ease; padding:0 24px;">
+            <p class="text-sm leading-relaxed pb-5" style="color:var(--clr-muted);">Отправляем через СДЭК, любую транспортную компанию, либо самовывоз из Нижнего Новгорода. Возможна поштучная отгрузка клиентам напрямую (фулфилмент).</p>
+          </div>
+        </div>
+
+        <div class="faq-item bg-white rounded-xl overflow-hidden" style="border:1px solid #e5e5e5;">
+          <button class="faq-btn w-full flex items-center justify-between px-6 py-5 text-left" onclick="toggleFaq(this)">
+            <span class="font-bold text-sm pr-4" style="font-family:var(--font-d);">Что значит «переделываем браки бесплатно»?</span>
+            <span class="faq-icon shrink-0" style="color:var(--clr-accent);">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><path d="M6 9l6 6 6-6"/></svg>
+            </span>
+          </button>
+          <div class="faq-body" style="max-height:0; overflow:hidden; transition:max-height 0.38s ease, padding 0.3s ease; padding:0 24px;">
+            <p class="text-sm leading-relaxed pb-5" style="color:var(--clr-muted);">Если по нашей вине в изделии обнаружен производственный дефект — переделаем за наш счёт. Мы несём ответственность за качество каждого изделия.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+</main>
+
+<!-- ═══════════════════════════════════════════════════
+     FOOTER
+════════════════════════════════════════════════════ -->
+<footer style="background: var(--clr-dark); color: var(--clr-textlt);">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+
+      <!-- Бренд -->
+      <div>
+        <a href="#hero">
+          <img src=".claude/skills/mainlogo.png" alt="ПошивНН" class="h-12 object-contain mb-4" style="max-width:160px;" loading="lazy">
+        </a>
+        <p class="text-sm leading-relaxed" style="color: var(--clr-muted);">
+          Производство одежды под ключ.
+        </p>
+        <div class="flex gap-3 mt-5">
+          <a href="https://t.me/poshivnn" target="_blank" rel="noopener"
+             class="btn btn-accent btn-sm">Telegram</a>
+          <a href="https://wa.me/79001234567" target="_blank" rel="noopener"
+             class="btn btn-outline btn-sm">WhatsApp</a>
+        </div>
+      </div>
+
+      <!-- Навигация -->
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--clr-muted);">
+          Навигация
+        </p>
+        <ul class="flex flex-col gap-2 text-sm">
+          <li><a href="#advantages" class="nav-link">Преимущества</a></li>
+          <li><a href="#key"        class="nav-link">Услуга «Под ключ»</a></li>
+          <li><a href="#portfolio"  class="nav-link">Наши клиенты</a></li>
+          <li><a href="#production" class="nav-link">Производство</a></li>
+          <li><a href="#contacts"   class="nav-link">Контакты</a></li>
+        </ul>
+      </div>
+
+      <!-- Контакты -->
+      <div>
+        <p class="text-xs font-semibold uppercase tracking-widest mb-4" style="color: var(--clr-muted);">
+          Контакты
+        </p>
+        <ul class="flex flex-col gap-2 text-sm">
+          <li>
+            <a href="https://t.me/poshivnn" target="_blank" rel="noopener" class="nav-link">
+              Telegram: @poshivnn
+            </a>
+          </li>
+          <li>
+            <a href="https://wa.me/79001234567" target="_blank" rel="noopener" class="nav-link">
+              WhatsApp: +7 900 123-45-67
+            </a>
+          </li>
+          <li>
+            <a href="tel:+79001234567" class="nav-link">+7 900 123-45-67</a>
+          </li>
+          <li>
+            <a href="mailto:info@poshivnn.ru" class="nav-link">info@poshivnn.ru</a>
+          </li>
+          <li style="color: var(--clr-muted);">Нижний Новгород</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- Нижняя строка -->
+    <div class="mt-10 pt-6 border-t border-[#2e2e2e] flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3 text-xs"
+         style="color: var(--clr-muted);">
+      <p>© 2026 ООО «ПошивНН» · ИНН 5258158295 · ОГРН 245200023804</p>
+      <p>г. Нижний Новгород</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ═══════════════════════════════════════════════════
+     POPUP — появляется через 60 секунд
+════════════════════════════════════════════════════ -->
+<div class="popup-overlay" id="popupOverlay" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+  <div class="popup-box">
+    <button class="popup-close" id="popupClose" aria-label="Закрыть">
+      <svg width="14" height="14" viewBox="0 0 14 14" fill="none" stroke="var(--clr-text)" stroke-width="2" stroke-linecap="round">
+        <line x1="1" y1="1" x2="13" y2="13"/><line x1="13" y1="1" x2="1" y2="13"/>
+      </svg>
+    </button>
+    <p class="text-xs font-semibold uppercase tracking-widest mb-1" style="color:var(--clr-accent);">Хотите узнать стоимость?</p>
+    <h3 id="popupTitle" class="font-black text-xl mb-5 leading-snug" style="font-family:var(--font-d); color:var(--clr-text);">
+      Оставьте заявку —<br>рассчитаем за 10 минут
+    </h3>
+    <form id="popupForm" onsubmit="handlePopupSubmit(event)" novalidate>
+
+      <div class="form-field">
+        <input type="text" id="pfname" name="name" placeholder=" " required autocomplete="name">
+        <label for="pfname">Имя *</label>
+      </div>
+
+      <div class="form-field">
+        <input type="tel" id="pfphone" name="phone" placeholder=" " required autocomplete="tel">
+        <label for="pfphone">Телефон *</label>
+      </div>
+
+      <div class="form-field">
+        <input type="email" id="pfemail" name="email" placeholder=" " autocomplete="email">
+        <label for="pfemail">Email (необязательно)</label>
+      </div>
+
+      <div class="form-field">
+        <textarea id="pfnote" name="note" placeholder=" " rows="2"></textarea>
+        <label for="pfnote">Заметка / комментарий</label>
+      </div>
+
+      <button type="submit" class="form-submit w-full rounded-lg px-6 font-bold text-sm tracking-wide"
+              style="font-family:var(--font-d);">
+        <span>Отправить заявку →</span>
+      </button>
+
+      <p id="popupMsg" class="text-xs mt-4 text-center" style="color:var(--clr-accent); display:none;">
+        Заявка отправлена! Мы свяжемся с вами в ближайшее время.
+      </p>
+
+    </form>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     FLOATING BUTTONS (все устройства)
+════════════════════════════════════════════════════ -->
+<div class="fixed bottom-6 right-5 z-40 flex flex-col gap-3">
+  <a href="https://t.me/poshivnn" target="_blank" rel="noopener"
+     title="Написать в Telegram"
+     class="w-13 h-13 rounded-full flex items-center justify-center shadow-xl transition-transform duration-200 hover:scale-110"
+     style="background: #229ED9; width: 52px; height: 52px;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M21.8 2.1L1.3 10.1c-1.4.6-1.4 1.4-.3 1.7l5.2 1.6 2 6.4c.3.8.4 1.2 1.1 1.2.6 0 .9-.3 1.3-.7l3.2-3.1 5.2 3.8c1 .5 1.7.3 1.9-.9l3.4-16.1c.4-1.5-.6-2.2-1.7-1.9z" fill="white"/>
+    </svg>
+  </a>
+  <a href="https://wa.me/79001234567" target="_blank" rel="noopener"
+     title="Написать в WhatsApp"
+     class="rounded-full flex items-center justify-center shadow-xl transition-transform duration-200 hover:scale-110"
+     style="background: #25D366; width: 52px; height: 52px;">
+    <svg width="24" height="24" viewBox="0 0 24 24" fill="none">
+      <path d="M12 2C6.5 2 2 6.5 2 12c0 2 .6 3.9 1.6 5.5L2 22l4.7-1.6C8.2 21.4 10.1 22 12 22c5.5 0 10-4.5 10-10S17.5 2 12 2zm5.5 14.1c-.2.6-1.2 1.1-1.7 1.2-.4.1-.9.1-1.4-.1-.3-.1-.7-.2-1.3-.5-2.2-1-3.7-3.2-3.8-3.3-.1-.2-.9-1.2-.9-2.3 0-1.1.6-1.6.8-1.9.2-.2.4-.3.6-.3h.4c.2 0 .4 0 .5.4.2.5.7 1.7.8 1.8.1.1.1.3 0 .4l-.3.4c-.1.1-.2.3-.1.5.2.4.8 1.3 1.6 2 1 .9 1.9 1.2 2.2 1.3.2.1.4 0 .5-.1l.7-.8c.1-.2.3-.2.5-.1.2.1 1.3.6 1.5.7.2.1.3.2.4.3.1.3-.1 1.1-.3 1.7z" fill="white"/>
+    </svg>
+  </a>
+</div>
+
+<!-- ═══════════════════════════════════════════════════
+     JAVASCRIPT
+════════════════════════════════════════════════════ -->
+<script>
+  // 1. Бургер-меню
+  const burger = document.getElementById('burger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  if (burger) {
+    burger.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+      burger.classList.toggle('open');
+    });
+  }
+
+  // Закрывать мобильное меню при клике на пункт
+  document.querySelectorAll('.mobile-nav-link').forEach(link => {
+    link.addEventListener('click', () => {
+      mobileMenu.classList.add('hidden');
+      burger.classList.remove('open');
+    });
+  });
+
+  // 2. Подсветка активного пункта навигации при скролле
+  const sections = document.querySelectorAll('main section[id]');
+  const navLinks  = document.querySelectorAll('.nav-link[href^="#"]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    sections.forEach(s => {
+      if (window.scrollY >= s.offsetTop - 90) current = s.id;
+    });
+    navLinks.forEach(a =>
+      a.classList.toggle('active', a.getAttribute('href') === '#' + current)
+    );
+  }, { passive: true });
+
+  // 3. Scroll-reveal (двунаправленный — анимируется и при прокрутке вниз, и обратно)
+  const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+      } else {
+        e.target.classList.remove('visible');
+      }
+    });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.anim-scroll').forEach(el => revealObserver.observe(el));
+
+  // 4. Count-up для счётчиков в #production
+  const counters = document.querySelectorAll('.counter[data-count]');
+  if (counters.length) {
+    const countObserver = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (!e.isIntersecting) return;
+        const target = +e.target.dataset.count;
+        const duration = 1400;
+        const steps = 60;
+        const interval = duration / steps;
+        let current = 0;
+        const increment = target / steps;
+        const timer = setInterval(() => {
+          current = Math.min(current + increment, target);
+          e.target.textContent = Math.floor(current).toLocaleString('ru-RU');
+          if (current >= target) {
+            e.target.textContent = target.toLocaleString('ru-RU');
+            clearInterval(timer);
+          }
+        }, interval);
+        countObserver.unobserve(e.target);
+      });
+    }, { threshold: 0.6 });
+    counters.forEach(el => countObserver.observe(el));
+  }
+
+  // 5. FAQ accordion
+  function toggleFaq(btn) {
+    const item = btn.closest('.faq-item');
+    const body = item.querySelector('.faq-body');
+    const isOpen = item.classList.contains('open');
+    // Close all
+    document.querySelectorAll('.faq-item.open').forEach(el => {
+      el.classList.remove('open');
+      el.querySelector('.faq-body').style.maxHeight = '0';
+      el.querySelector('.faq-body').style.paddingBottom = '0';
+    });
+    if (!isOpen) {
+      item.classList.add('open');
+      body.style.maxHeight = body.scrollHeight + 'px';
+    }
+  }
+
+  // Gallery strip drag-scroll
+  const strip = document.getElementById('galleryStrip');
+  if (strip) {
+    let isDown = false, startX, scrollLeft;
+    strip.addEventListener('mousedown', e => {
+      isDown = true; startX = e.pageX - strip.offsetLeft; scrollLeft = strip.scrollLeft;
+    });
+    strip.addEventListener('mouseleave', () => isDown = false);
+    strip.addEventListener('mouseup', () => isDown = false);
+    strip.addEventListener('mousemove', e => {
+      if (!isDown) return;
+      e.preventDefault();
+      const x = e.pageX - strip.offsetLeft;
+      strip.scrollLeft = scrollLeft - (x - startX) * 1.4;
+    });
+  }
+
+  // 6. Форма обратной связи (#contacts)
+  function handleFormSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('contactForm');
+    const name = form.querySelector('[name="name"]').value.trim();
+    const phone = form.querySelector('[name="phone"]').value.trim();
+    if (!name || !phone) {
+      alert('Пожалуйста, заполните Имя и Телефон');
+      return;
+    }
+    document.getElementById('formMsg').style.display = 'block';
+    form.reset();
+    setTimeout(() => { document.getElementById('formMsg').style.display = 'none'; }, 5000);
+  }
+
+  // 7. Всплывающее окно через 60 секунд
+  function openPopup() {
+    if (sessionStorage.getItem('popupShown')) return;
+    document.getElementById('popupOverlay').classList.add('active');
+    document.body.style.overflow = 'hidden';
+    sessionStorage.setItem('popupShown', '1');
+  }
+  function closePopup() {
+    document.getElementById('popupOverlay').classList.remove('active');
+    document.body.style.overflow = '';
+  }
+  document.getElementById('popupClose').addEventListener('click', closePopup);
+  document.getElementById('popupOverlay').addEventListener('click', function(e) {
+    if (e.target === this) closePopup();
+  });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') closePopup(); });
+  setTimeout(openPopup, 45000);
+
+  function handlePopupSubmit(e) {
+    e.preventDefault();
+    const form = document.getElementById('popupForm');
+    const name = form.querySelector('[name="name"]').value.trim();
+    const phone = form.querySelector('[name="phone"]').value.trim();
+    if (!name || !phone) {
+      alert('Пожалуйста, заполните Имя и Телефон');
+      return;
+    }
+    document.getElementById('popupMsg').style.display = 'block';
+    form.reset();
+    setTimeout(closePopup, 3000);
+  }
+</script>
+
 </body>
 </html>
